@@ -7,18 +7,9 @@ lint:
   name: yamllint
 platforms:
   - name: instance
-    image: centos:7
-    command: /usr/sbin/init
-    security_opts:
-      - seccomp=unconfined
-    capabilities:
-      - SYS_ADMIN
-    tmpfs:
-      - /run
-      - /tmp
-    volume_mounts:
+    image: retr0h/molecule
+    volume:
       - /var/run/docker.sock:/var/run/docker.sock
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
     privileged: True
     pre_build_image: True
 provisioner:
